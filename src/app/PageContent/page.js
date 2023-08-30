@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function Home({ title, type, options, isActive, input, setInput, error, setError, currentPage }) {
 
@@ -17,6 +17,13 @@ export default function Home({ title, type, options, isActive, input, setInput, 
         }
     };
 
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (isActive && inputRef.current) {
+            inputRef.current.focus(); // Focus on the input when the component mounts
+        }
+    }, [isActive]);
 
 
     if (type == "option") {
@@ -45,7 +52,7 @@ export default function Home({ title, type, options, isActive, input, setInput, 
                         )
                     })}
 
-                    {!error && <div className={`mt-4 flex flex-col items-start text-xl cursor-pointer font-semibold pb-4`}>
+                    {!error && <div className={`mt-4 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
                         <div className='flex mb-4 group rounded-lg border border-transparent px-2.5 py-2 transition-colors bg-gray-100 bg-opacity-10  hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:drk:bg-opacity-30'>
                             <span >OK {' '}</span>
                             <span className="inline-block pl-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -85,9 +92,9 @@ export default function Home({ title, type, options, isActive, input, setInput, 
                     <span className="text-xs text-blue-400 pr-px min-w-fit"> {currentPage + 1} -&gt;</span>{title}
                 </div>
                 <div className="bg-transparent border-b-2 border-slate-200 pb-2">
-                    <input type="email" autoFocus className="text-xl focus:outline-none appearance-none bg-transparent" onChange={(e) => { setInput(e.target.value), setError(false) }} value={input} placeholder="Type your answer here..." />
+                    <input type="email" ref={inputRef} autoFocus={1 === 1} className="text-xl focus:outline-none appearance-none bg-transparent" onChange={(e) => { setInput(e.target.value), setError(false) }} value={input} placeholder="Type your answer here..." />
                 </div>
-                {!error && <div className={`mt-4 flex flex-col items-start text-xl cursor-pointer font-semibold pb-4`}>
+                {!error && <div className={`mt-4 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
                     <div className='flex mb-4 group rounded-lg border border-transparent px-2.5 py-2 transition-colors bg-gray-100 bg-opacity-10  hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:drk:bg-opacity-30'>
                         <span >OK {' '}</span>
                         <span className="inline-block pl-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none">

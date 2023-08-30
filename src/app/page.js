@@ -50,7 +50,6 @@ export default function Home() {
     setTimeout(() => {
       setUpdatedPages(updatedPagesCopy);
       setCurrentPage((prevPage) => (prevPage + 1) % pages.length);
-      console.log(updatedPages[currentPage + 1].titleValue)
       if (updatedPages[currentPage + 1].titleValue) {
         setInput(updatedPages[currentPage + 1].titleValue)
       } else {
