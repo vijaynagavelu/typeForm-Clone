@@ -18,10 +18,107 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+
+  overflow: hidden;
+}
+
+
+
+.content {
+  width: 100%;
+  bottom: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.active-content {
+  opacity: 0;
+  /* transition: ease-in-out, transform 0.01s ease-in-out; */
+  transform: translateY(60%);
+  /* animation: moveUp 0.3s ease-in-out 0.3s forwards; */
+
+  animation: DownUp 0.4s ease-in-out forwards;
+}
+
+
+.inactive-content {
+  opacity: 1;
+  /* transition: ease-in-out, transform 0.01s ease-in-out; */
+  transform: translateY(0%);
+
+  animation: moveUp 0.4s ease-in-out 0.1s forwards;
+  /* Move the content downward */
+}
+
+@keyframes moveUp {
+  0% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.01;
+  }
+
+  to {
+    transform: translateY(-100%);
+    /* Move the content downward */
+  }
+}
+
+@keyframes DownUp {
+  0% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(0%);
+    /* Move the content downward */
+  }
+}
+
+
+button {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.blinking-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border: 1px black solid;
+}
+
+@keyframes blink-animation {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  border: 1px white solid;
+  animation: blink-animation 0.3s linear infinite;
 }
