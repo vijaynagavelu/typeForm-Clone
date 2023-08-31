@@ -20,9 +20,16 @@ export default function Home() {
       content: 'This is the content of page 2.',
     },
     {
-      title: 'Highest Level of EducationThis question is required.',
+      title: 'Highest Level of Education*.',
       titleValue: "",
       type: 'option',
+      options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
+      content: 'This is the content of page 2.',
+    },
+    {
+      title: 'Highest Level of Education*',
+      titleValue: "",
+      type: 'dropDown',
       options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
       content: 'This is the content of page 2.',
     }
@@ -61,6 +68,32 @@ export default function Home() {
   };
 
 
+  const handleLoadPreviousPage = () => {
+    if (currentPage === 0) {
+      // If on the first page, return or handle as needed
+      return;
+    }
+
+    const updatedPagesCopy = [...updatedPages];
+    updatedPagesCopy[currentPage].titleValue = input;
+
+    setFadeIn(false); // Trigger fade-out effect
+
+    setTimeout(() => {
+      setUpdatedPages(updatedPagesCopy);
+      setCurrentPage((prevPage) => (prevPage - 1)); // Move to the previous page
+
+      // Update input field based on the previous page's value
+      setInput(updatedPagesCopy[currentPage - 1].titleValue || '');
+
+      setFadeIn(true); // Trigger fade-in effect
+    }, 300); // Adjust the delay to match your CSS transition duration
+  };
+
+
+
+
+
   return (
 
     <div className="app">
@@ -76,7 +109,15 @@ export default function Home() {
         setError={setError}
       // content={pages[currentPage].content}
       />
-      <button onClick={handleLoadNextPage}>Load Next Page</button>
+
+      <div className=' cursor-pointer rounded bg-slate-700 '>
+        <button className=' border-r border-slate-400 p-2.5' onClick={handleLoadNextPage}>
+          <svg height="9" width="14"><path fill='white' d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
+        </button>
+        <button className=' rotate-180 p-2.5' onClick={handleLoadPreviousPage}>
+          <svg height="9" width="14"><path fill='white' d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
+        </button>
+      </div>
     </div>
 
     // <main className="flex h-screen   flex-col items-center justify-center p-10">

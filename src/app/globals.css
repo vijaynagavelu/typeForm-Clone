@@ -34,23 +34,17 @@ body {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
+
 .active-content {
   opacity: 0;
-  /* transition: ease-in-out, transform 0.01s ease-in-out; */
   transform: translateY(60%);
-  /* animation: moveUp 0.3s ease-in-out 0.3s forwards; */
-
   animation: DownUp 0.4s ease-in-out forwards;
 }
 
-
 .inactive-content {
   opacity: 1;
-  /* transition: ease-in-out, transform 0.01s ease-in-out; */
   transform: translateY(0%);
-
   animation: moveUp 0.4s ease-in-out 0.1s forwards;
-  /* Move the content downward */
 }
 
 @keyframes moveUp {
@@ -64,7 +58,6 @@ body {
 
   to {
     transform: translateY(-100%);
-    /* Move the content downward */
   }
 }
 
@@ -79,9 +72,15 @@ body {
 
   to {
     transform: translateY(0%);
-    /* Move the content downward */
   }
 }
+
+
+
+
+
+
+
 
 
 button {
@@ -121,4 +120,40 @@ button {
 .blink {
   border: 1px white solid;
   animation: blink-animation 0.3s linear infinite;
+}
+
+.animate-dropdown-in {
+  animation: dropdown-in 500ms ease-in-out 100ms forwards;
+}
+
+@keyframes dropdown-in {
+  0% {
+    opacity: 0;
+  }
+
+  56% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-dropdown-out {
+  animation: dropdown-out 500ms ease-in-out 300ms forwards;
+}
+
+@keyframes dropdown-out {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
