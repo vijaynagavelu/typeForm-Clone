@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import PageContent from '../app/PageContent/page';
+import axios from 'axios';
 
 export default function Home() {
 
@@ -50,6 +51,39 @@ export default function Home() {
   const [showNewPage, setShowNewPage] = useState(false);
   const [showNewPage1, setShowNewPage1] = useState(false);
   const [showFadeOut, setShowFadeOut] = useState(false);
+
+
+
+  // const sendEmail = async () => {
+  //   try {
+  //     const response = await fetch('/api/email', {
+  //       method: "POST",
+  //     });
+  //     if (response.status === 200) {
+  //       console.log('Email sent successfully:',);
+  //       alert('Email sent successfully');
+  //     } else {
+  //       console.error('Error sending email:',);
+  //       alert('Error sending email');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending email:',);
+  //     alert('Error sending email');
+  //   }
+  // };
+
+
+  const sendEmail = async () => {
+    try {
+      console.log("wkrg")
+      // Make a POST request to your API route that sends the email
+      await axios.post('/api/email/');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+
+
 
   useEffect(() => {
     const fadeOutTimeout = setTimeout(() => {
@@ -157,6 +191,9 @@ export default function Home() {
 
         <div className="relaive flex absolute items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[140px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
         </div>
+
+        <button onClick={sendEmail}>Send Email</button>
+
 
         <div className={`fade-out-container ${showFadeOut ? 'fade-out' : ''} pb-2 mb-4 text-xl`}>
           <p className='text-sm'>powered by</p>
