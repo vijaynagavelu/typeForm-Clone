@@ -196,7 +196,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-w-[360px] overflow-x-auto  h-screen flex-col items-center justify-center p-10">
+    <main className="flex  h-screen flex-col items-center justify-center p-10">
 
       < div className="app flex grow items-center w-full md:w-3/4 lg:w-2/3 ">
         <PageContent
