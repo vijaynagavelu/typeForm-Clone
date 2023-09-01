@@ -87,7 +87,6 @@ export default function Home({ title, type, options, isActive, upDown, input, se
                                 <svg className='animate-spin ' xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="loading"><path fill='white' d="M27.02 22.82a.182.182 1080 1 0 .364 0 .182.182 1080 1 0-.364 0zm-4.018 4.146a.362.362 1080 1 0 .724 0 .362.362 1080 1 0-.724 0zM17.586 29.1a.544.544 1080 1 0 1.088 0 .544.544 1080 1 0-1.088 0zm-5.83-.286a.724.724 1080 1 0 1.448 0 .724.724 1080 1 0-1.448 0zM6.584 26.16a.906.906 1080 1 0 1.812 0 .906.906 1080 1 0-1.812 0zm-3.582-4.512a1.088 1.088 1080 1 0 2.176 0 1.088 1.088 1080 1 0-2.176 0zm-1.344-5.54a1.268 1.268 1080 1 0 2.536 0 1.268 1.268 1080 1 0-2.536 0zm1.106-5.504a1.45 1.45 1080 1 0 2.9 0 1.45 1.45 1080 1 0-2.9 0zm3.318-4.438a1.632 1.632 1080 1 0 3.264 0 1.632 1.632 1080 1 0-3.264 0zm4.872-2.542a1.812 1.812 1080 1 0 3.624 0 1.812 1.812 1080 1 0-3.624 0zm5.472-.158a1.994 1.994 1080 1 0 3.988 0 1.994 1.994 1080 1 0-3.988 0zm5.01 2.254a2.174 2.174 1080 1 0 4.348 0 2.174 2.174 1080 1 0-4.348 0zm3.56 4.234a2.356 2.356 1080 1 0 4.712 0 2.356 2.356 1080 1 0-4.712 0zm1.416 5.484a2.538 2.538 1080 1 0 5.076 0 2.538 2.538 1080 1 0-5.076 0z"></path></svg>
                             </span>
                         </div>
-                        <div className="text-xs">{lastPage ? '' : 'press Enter ↵'} </div>
                     </div>}
 
                     {error && <div className={` ${showDropdown ? 'text-transparent hidden' : ''} mt-8 flex flex-col items-start text-md cursor-pointer font-normal pb-4`}>
@@ -180,7 +179,6 @@ export default function Home({ title, type, options, isActive, upDown, input, se
                                 <svg className='animate-spin ' xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="loading"><path fill='white' d="M27.02 22.82a.182.182 1080 1 0 .364 0 .182.182 1080 1 0-.364 0zm-4.018 4.146a.362.362 1080 1 0 .724 0 .362.362 1080 1 0-.724 0zM17.586 29.1a.544.544 1080 1 0 1.088 0 .544.544 1080 1 0-1.088 0zm-5.83-.286a.724.724 1080 1 0 1.448 0 .724.724 1080 1 0-1.448 0zM6.584 26.16a.906.906 1080 1 0 1.812 0 .906.906 1080 1 0-1.812 0zm-3.582-4.512a1.088 1.088 1080 1 0 2.176 0 1.088 1.088 1080 1 0-2.176 0zm-1.344-5.54a1.268 1.268 1080 1 0 2.536 0 1.268 1.268 1080 1 0-2.536 0zm1.106-5.504a1.45 1.45 1080 1 0 2.9 0 1.45 1.45 1080 1 0-2.9 0zm3.318-4.438a1.632 1.632 1080 1 0 3.264 0 1.632 1.632 1080 1 0-3.264 0zm4.872-2.542a1.812 1.812 1080 1 0 3.624 0 1.812 1.812 1080 1 0-3.624 0zm5.472-.158a1.994 1.994 1080 1 0 3.988 0 1.994 1.994 1080 1 0-3.988 0zm5.01 2.254a2.174 2.174 1080 1 0 4.348 0 2.174 2.174 1080 1 0-4.348 0zm3.56 4.234a2.356 2.356 1080 1 0 4.712 0 2.356 2.356 1080 1 0-4.712 0zm1.416 5.484a2.538 2.538 1080 1 0 5.076 0 2.538 2.538 1080 1 0-5.076 0z"></path></svg>
                             </span>
                         </div>
-                        <div className="text-xs">{lastPage ? '' : 'press Enter ↵'} </div>
                     </div>}
 
 
@@ -213,27 +211,35 @@ export default function Home({ title, type, options, isActive, upDown, input, se
                 </div>}
 
                 <div className="bg-transparent border-b-2 border-slate-200 pb-2">
-                    <input ref={inputRef} autoFocus={1 === 1} className=" w-full text-2xl font-light focus:outline-none appearnce-none bg-transparent" onChange={(e) => { setInput(e.target.value), setError(false) }} value={input} placeholder="Type your answer here..." />
-                </div>
-
-                {!error && <div className={`mt-8 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
-                    <div onClick={() => { lastPage ? handleSubmit() : handleLoadNextPage() }} onKeyDown={(e) => {
+                    <input onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                             lastPage ? handleSubmit() : handleLoadNextPage();
                         }
-                    }}
-                        tabIndex={0} className={`flex  ${lastPage ? 'w-full justify-center' : ''} ${submit ? 'hidden' : ''}  text-base mb-4 group rounded-lg border border-transparent px-2.5 py-2 transition-colors bg-gray-100 bg-opacity-10 hover:bg-gray-800 `}>
-                        <span> {lastPage ? 'Submit' : 'OK'}</span>
-                        <span className="inline-block pl-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                            ✓
-                        </span>
+                    }} ref={inputRef} autoFocus={true} className=" w-full text-2xl font-light focus:outline-none appearnce-none bg-transparent" onChange={(e) => { setInput(e.target.value), setError(false) }} value={input} placeholder="Type your answer here..." />
+                </div>
+
+                {!error && <div className={`mt-8 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
+                    <div className='flex gap-4 items-center'>
+                        <div onClick={() => { lastPage ? handleSubmit() : handleLoadNextPage() }} onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                lastPage ? handleSubmit() : handleLoadNextPage();
+                            }
+                        }}
+                            tabIndex={0} className={`flex  ${lastPage ? 'w-full justify-center' : ''} ${submit ? 'hidden' : ''}  text-base mb-0 group rounded-lg border border-transparent px-2.5 py-2 transition-colors bg-gray-100 bg-opacity-10 hover:bg-gray-800 `}>
+                            <span> {lastPage ? 'Submit' : 'OK'}</span>
+                            <span className="inline-block pl-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                                ✓
+                            </span>
+                        </div>
+                        <div className="text-xs">{lastPage ? '' : 'press Enter ↵'} </div>
                     </div>
+
+
                     <div className={`flex  ${lastPage ? 'w-full justify-center' : ''} ${!submit ? 'hidden' : ''}  text-base mb-4 group rounded-lg border border-transparent px-2.5 py-2 transition-colors bg-gray-100 bg-opacity-10 hover:bg-gray-800`}>
                         <span className={`${lastPage ? '' : 'hidden'}`}>
                             <svg className='animate-spin ' xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="loading"><path fill='white' d="M27.02 22.82a.182.182 1080 1 0 .364 0 .182.182 1080 1 0-.364 0zm-4.018 4.146a.362.362 1080 1 0 .724 0 .362.362 1080 1 0-.724 0zM17.586 29.1a.544.544 1080 1 0 1.088 0 .544.544 1080 1 0-1.088 0zm-5.83-.286a.724.724 1080 1 0 1.448 0 .724.724 1080 1 0-1.448 0zM6.584 26.16a.906.906 1080 1 0 1.812 0 .906.906 1080 1 0-1.812 0zm-3.582-4.512a1.088 1.088 1080 1 0 2.176 0 1.088 1.088 1080 1 0-2.176 0zm-1.344-5.54a1.268 1.268 1080 1 0 2.536 0 1.268 1.268 1080 1 0-2.536 0zm1.106-5.504a1.45 1.45 1080 1 0 2.9 0 1.45 1.45 1080 1 0-2.9 0zm3.318-4.438a1.632 1.632 1080 1 0 3.264 0 1.632 1.632 1080 1 0-3.264 0zm4.872-2.542a1.812 1.812 1080 1 0 3.624 0 1.812 1.812 1080 1 0-3.624 0zm5.472-.158a1.994 1.994 1080 1 0 3.988 0 1.994 1.994 1080 1 0-3.988 0zm5.01 2.254a2.174 2.174 1080 1 0 4.348 0 2.174 2.174 1080 1 0-4.348 0zm3.56 4.234a2.356 2.356 1080 1 0 4.712 0 2.356 2.356 1080 1 0-4.712 0zm1.416 5.484a2.538 2.538 1080 1 0 5.076 0 2.538 2.538 1080 1 0-5.076 0z"></path></svg>
                         </span>
                     </div>
-                    <div className="text-xs">{lastPage ? '' : 'press Enter ↵'} </div>
                 </div>}
 
 

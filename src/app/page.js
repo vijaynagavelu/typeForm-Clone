@@ -131,7 +131,7 @@ export default function Home() {
   const [creditPage, setCreditPage] = useState(false);
 
   const [showNewPage, setShowNewPage] = useState(false);
-  const [showNewPage1, setShowNewPage1] = useState(false);
+  const [mainPage, setMainPage] = useState(false);
   const [showFadeOut, setShowFadeOut] = useState(false);
 
   const sendEmail = async () => {
@@ -143,29 +143,6 @@ export default function Home() {
       console.error('Error sending email:', error);
     }
   };
-
-
-  useEffect(() => {
-    const fadeOutTimeout = setTimeout(() => {
-      setShowFadeOut(true); // Fade out
-    }, 1000); // After 1 second, trigger the fade-out
-
-    return () => clearTimeout(fadeOutTimeout);
-  }, []);
-
-  useEffect(() => {
-    if (showFadeOut) {
-      const fadeInTimeout = setTimeout(() => {
-        setShowNewPage(true)
-      }, 400);
-      const fadeInTimeout1 = setTimeout(() => {
-        setShowNewPage(true)
-        setShowNewPage1(true);
-      }, 500); // 200ms gap after fade-out
-      return () => { clearTimeout(fadeInTimeout), clearTimeout(fadeInTimeout1) };
-    }
-  }, [showFadeOut]);
-
 
   const handleLoadNextPage = (value) => {
     console.log(value);
@@ -219,6 +196,27 @@ export default function Home() {
     }, 300); // Adjust the delay to match your CSS transition duration
   };
 
+  useEffect(() => {
+    const fadeOutTimeout = setTimeout(() => {
+      setShowFadeOut(true);
+    }, 1000);
+
+    return () => clearTimeout(fadeOutTimeout);
+  }, []);
+
+  useEffect(() => {
+    if (showFadeOut) {
+      const fadeInTimeout = setTimeout(() => {
+        setShowNewPage(true)
+      }, 400);
+      const fadeInTimeout1 = setTimeout(() => {
+        setShowNewPage(true)
+        setMainPage(true);
+      }, 500);
+      return () => { clearTimeout(fadeInTimeout), clearTimeout(fadeInTimeout1) };
+    }
+  }, [showFadeOut]);
+
 
   if (creditPage) {
     return (
@@ -260,7 +258,7 @@ export default function Home() {
         </div>
 
         {showNewPage ? (
-          <div className={`fade-in-container ${showNewPage1 ? 'fade-in' : ''}  md:w-3/4 lg:w-2/3`}>
+          <div className={`fade-in-container ${mainPage ? 'fade-in' : ''}  md:w-3/4 lg:w-2/3`}>
 
             <div className="flex flex-col text-base md:text-md items-center lg:text-xl text-center w-full ">
               <h2 className={`mb-3 text-2xl font-semibold`}>
