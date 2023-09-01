@@ -56,16 +56,14 @@ export default function Home({ title, type, options, isActive, upDown, input, se
 
 
 
-
-
     if (type == 'dropDown') {
         return (
             <main className={`${contentClasses} flex grow-0 flex-col justify-center `}>
 
-                <div className='h-80 z-[50] w-full absolute bg-black -mt-96'></div>
+                <div className='h-80 z-[50] w-full  bg-black -mt-96'></div>
 
                 <div className={`flex flex-col text-left`}>
-                    <div className={`mb-4  z-50  bg-black pb-3 flex items-center text-xl font-light`}>
+                    <div className={`pb-7  z-50  bg-black  flex items-center text-xl font-light`}>
                         <span className="text-xs text-blue-400 pr-px min-w-fit -ml-6 mr-1"> {currentPage + 1} -&gt;</span>{title}
                     </div>
                     <div className="z-[51] bg-black flex justify-between items-center border-b-2 border-slate-200 pb-2">
