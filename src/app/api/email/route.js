@@ -17,10 +17,23 @@ export async function POST(req) {
             },
         });
 
+        await new Promise((resolve, reject) => {
+            // verify connection configuration
+            transporter.verify(function (error, success) {
+                if (error) {
+                    console.log(error);
+                    reject(error);
+                } else {
+                    console.log("Server is ready to take our messages");
+                    resolve(success);
+                }
+            });
+        });
+
         const mailOptions = {
             from: 'vijay.n.2015.eee@rajalakshmi.edu.in',
             to: 'vijaynaga.0503@gmail.com',
-            subject: `Statement of Purpose for${data[1].titleValue}`,
+            subject: `Statement of Purpose for ${data[1].titleValue}`,
             text: `Dear ${data[1].titleValue},
 
 Please find attached the Statement of Purpose template for your student
@@ -43,14 +56,17 @@ Ph: 226-774-9168
 Email: info@effizient.ca`,
         };
 
-
-        // Send the email
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email:', error);
-            } else {
-                console.log('Email sent:', info.response);
-            }
+        await new Promise((resolve, reject) => {
+            // Send the email
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error('Error sending email:', error);
+                    reject(error);
+                } else {
+                    console.log('Email sent:', info.response);
+                    resolve(info);
+                }
+            });
         });
 
         return NextResponse.json({ message: 'Email sent successfully' });

@@ -50,8 +50,8 @@ export default function Home({ title, type, options, isActive, upDown, input, se
         setSubmit(true);
         setTimeout(() => {
             setSubmit(false);
-            handleLoadNextPage(true)
-            sendEmail()
+            handleLoadNextPage(true);
+            sendEmail();
         }, 700);
     };
 
