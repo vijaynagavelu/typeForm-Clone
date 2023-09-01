@@ -5,39 +5,121 @@ import axios from 'axios';
 
 export default function Home() {
 
+  // const pages = [
+  //   {
+  //     title: 'Email*',
+  //     titleValue: "",
+  //     type: 'question',
+  //     options: [],
+  //     content: 'This is the content of page 1.',
+  //   }, {
+  //     title: 'Full Name',
+  //     titleValue: "",
+  //     type: 'question',
+  //     options: [],
+  //     content: 'This is the content of page 2.',
+  //   }, {
+  //     title: 'Highest Level of Education*',
+  //     titleValue: "",
+  //     type: 'option',
+  //     options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
+  //     content: 'This is the content of page 2.',
+  //   }, {
+  //     title: 'Highest Level of Education*',
+  //     titleValue: "",
+  //     type: 'dropDown',
+  //     options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
+  //     content: 'This is the content of page 2.',
+  //   }, {
+  //     title: 'Did you pay your first year tuition?*',
+  //     titleValue: "",
+  //     type: 'option',
+  //     options: ["Yes", "No"],
+  //     content: 'This is the content of page 2.',
+  //   }
+  // ];
+
   const pages = [
     {
       title: 'Email*',
       titleValue: "",
       type: 'question',
-      options: [],
-      content: 'This is the content of page 1.',
     }, {
-      title: 'Full Name',
+      title: 'Full Name*',
       titleValue: "",
       type: 'question',
-      options: [],
-      content: 'This is the content of page 2.',
     }, {
-      title: 'Highest Level of Education*',
+      title: 'Age*',
       titleValue: "",
-      type: 'option',
-      options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
-      content: 'This is the content of page 2.',
+      type: 'question',
     }, {
       title: 'Highest Level of Education*',
       titleValue: "",
       type: 'dropDown',
       options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
-      content: 'This is the content of page 2.',
+    }, {
+      title: 'Institute where you completed your highest level of education*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'What did you study*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'Do you have any relevant work experience?*',
+      titleValue: "",
+      type: 'question',//ccscscsc
+      content: "<p>Write None if no work experience. Provide the following details if yes:<p> <br /> <ul><li> &ensp; 1. Job Title </li><li>&ensp; 2. Company Name</li><li>&ensp; 3. Job duties</li></ul > <br /> <p>Sample Answer: I worked as a Sales Manager at Effizient Immigration Inc from Jan 2022 till Feb 2023. In this role, I managed sales operations, reaching out to leads, lead the outreach program, ensured meeting monthly targets.</p>",
+    }, {
+      title: 'What institute did you get admitted to in Canada?*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'Which country are you applying from?*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'What are your future goals?*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'English Scores - Listening*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'English Scores - Reading*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'English Scores - Speaking*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'English Scores - Writing*',
+      titleValue: "",
+      type: 'question',
     }, {
       title: 'Did you pay your first year tuition?*',
       titleValue: "",
       type: 'option',
       options: ["Yes", "No"],
+    }, {
+      title: 'How much tuition fee did you pay?*',
+      titleValue: "",
+      type: 'question',
+    }, {
+      title: 'Did you do a GIC?*',
+      titleValue: "",
+      type: 'option',
+      options: ["Yes", "No"],
       content: 'This is the content of page 2.',
-    }
+    }, {
+      title: 'How much did you pay towards GIC?*',
+      titleValue: "",
+      type: 'question',
+    },
   ];
+
 
   const [start, setStart] = useState(false);
   const [updatedPages, setUpdatedPages] = useState([...pages]);
@@ -232,7 +314,7 @@ export default function Home() {
           setError={setError}
           handleLoadNextPage={handleLoadNextPage}
           sendEmail={sendEmail}
-        // content={pages[currentPage].content}
+          content={pages[currentPage].content}
         />
       </div>
 

@@ -2,17 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export default function Home({ title, type, options, isActive, upDown, input, setInput, error, setError, currentPage, lastPage, handleLoadNextPage, sendEmail }) {
+export default function Home({ title, type, options, isActive, upDown, input, setInput, error, setError, currentPage, lastPage, handleLoadNextPage, sendEmail, content }) {
 
     const contentClasses = `content  ${isActive ? (upDown ? 'active-content' : 'active-content1') : (upDown ? 'inactive-content' : 'inactive-content1')}`;
-
-    //const contentClasses = `content  ${isActive ? 'active-content' : 'inactive-content'}`;
-
-
     const alphabet = ['A', 'B', 'C', 'D', 'E'];
 
     const [blinking, setBlinking] = useState(false);
-
     const handleClick = () => {
         if (!blinking) {
             setBlinking(true);
@@ -32,7 +27,6 @@ export default function Home({ title, type, options, isActive, upDown, input, se
     }, [isActive]);
 
 
-
     const [showDropdown, setShowDropdown] = useState(false);
     const handleClickDropDown = () => {
         setTimeout(() => {
@@ -41,7 +35,6 @@ export default function Home({ title, type, options, isActive, upDown, input, se
     };
 
     const [submit, setSubmit] = useState('')
-
     const handleSubmit = () => {
         if (!input) {
             handleLoadNextPage()
@@ -211,9 +204,14 @@ export default function Home({ title, type, options, isActive, upDown, input, se
         <main className={`${contentClasses}`}>
 
             <div className={`flex flex-col text-left`}>
-                <div className={`mb-8 flex items-center text-xl font-light`}>
+                <div className={`${content ? 'mb-4' : 'mb-8'} flex items-center text-xl font-light`}>
                     <span className="text-xs text-blue-400 pr-px min-w-fit -ml-6 mr-1"> {currentPage + 1}-&gt;</span>{title}
                 </div>
+
+                {content && <div className='mb-4'>
+                    <div dangerouslySetInnerHTML={{ __html: content }} />
+                </div>}
+
                 <div className="bg-transparent border-b-2 border-slate-200 pb-2">
                     <input ref={inputRef} autoFocus={1 === 1} className=" w-full text-2xl font-light focus:outline-none appearnce-none bg-transparent" onChange={(e) => { setInput(e.target.value), setError(false) }} value={input} placeholder="Type your answer here..." />
                 </div>
