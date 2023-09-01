@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react';
 
 export default function Home({ title, type, options, isActive, upDown, input, setInput, error, setError, currentPage, lastPage, handleLoadNextPage }) {
@@ -87,7 +89,7 @@ export default function Home({ title, type, options, isActive, upDown, input, se
                         <div className="text-xs">press Enter ↵</div>
                     </div>} */}
 
-                    {!error && <div onClick={() => { lastPage ? handleSubmit() : handleLoadNextPage() }} className={`mt-8 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
+                    {!error && <div onClick={() => { lastPage ? handleSubmit() : handleLoadNextPage() }} className={`${showDropdown ? 'text-transparent hidden' : 'opacity-0 animate-dropdown-in'} mt-8 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
                         <div className={`flex  ${lastPage ? 'w-full justify-center' : ''} ${submit ? 'hidden' : ''}  text-base mb-4 group rounded-lg border border-transparent px-2.5 py-2 transition-colors bg-gray-100 bg-opacity-10 hover:bg-gray-800 `}>
                             <span> {lastPage ? 'Submit' : 'OK'}</span>
                             <span className="inline-block pl-2 transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -112,7 +114,7 @@ export default function Home({ title, type, options, isActive, upDown, input, se
                     </div>}
 
                     <div
-                        className={`dropDown  z-10 transition-all pb-4 border-b border-dashed border-b-white ease -in -out 
+                        className={`dropDown  z-10 transition-all pb-2 border-b border-dashed border-b-white ease-in-out 
                          ${showDropdown ? 'opacity-0 -mb-60 transform translate-y-1 duration-500 animate-dropdown-in'
                                 : '-mb-64 -mt-4 transform duration-[500ms] -translate-y-96 animate-dropdown-out '
                             } `}>
