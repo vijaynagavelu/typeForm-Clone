@@ -1,30 +1,27 @@
-import axios from 'axios';
 import { NextResponse } from 'next/server';
-
-// pages/api/sendEmail.js
-
 import nodemailer from 'nodemailer';
 
-export async function POST(req) {
-    console.log("post")
 
-    // if (req.method === 'POST') {
-    console.log("post in process")
+
+export async function POST(req) {
+    const body = await req.text();
+    const parsedData = JSON.parse(body);
+    const data = JSON.parse(parsedData.body);
+    console.log("post in process", data[1].titleValue)
     try {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
                 user: 'vijay.n.2015.eee@rajalakshmi.edu.in',
-                pass: 'vijayvijay', // Use the App Password you generated
+                pass: process.env.PASS,
             },
         });
 
-        // Define the email message
         const mailOptions = {
             from: 'vijay.n.2015.eee@rajalakshmi.edu.in',
             to: 'vijaynaga.0503@gmail.com',
-            subject: 'Statement of Purpose for Paul',
-            text: `Dear Paul,
+            subject: `Statement of Purpose for${data[1].titleValue}`,
+            text: `Dear ${data[1].titleValue},
 
 Please find attached the Statement of Purpose template for your student
 visa application to Canada. Kindly edit it as per your scenario and
@@ -48,13 +45,13 @@ Email: info@effizient.ca`,
 
 
         // Send the email
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email:', error);
-            } else {
-                console.log('Email sent:', info.response);
-            }
-        });
+        // transporter.sendMail(mailOptions, (error, info) => {
+        //     if (error) {
+        //         console.error('Error sending email:', error);
+        //     } else {
+        //         console.log('Email sent:', info.response);
+        //     }
+        // });
 
         return NextResponse.json({ message: 'Email sent successfully' });
     } catch (error) {
@@ -62,7 +59,7 @@ Email: info@effizient.ca`,
         return NextResponse.json({ error: 'An error occurred while sending the email' });
     }
 }
-// }
+
 
 
 

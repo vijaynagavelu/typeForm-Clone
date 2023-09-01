@@ -52,37 +52,15 @@ export default function Home() {
   const [showNewPage1, setShowNewPage1] = useState(false);
   const [showFadeOut, setShowFadeOut] = useState(false);
 
-
-
-  // const sendEmail = async () => {
-  //   try {
-  //     const response = await fetch('/api/email', {
-  //       method: "POST",
-  //     });
-  //     if (response.status === 200) {
-  //       console.log('Email sent successfully:',);
-  //       alert('Email sent successfully');
-  //     } else {
-  //       console.error('Error sending email:',);
-  //       alert('Error sending email');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error sending email:',);
-  //     alert('Error sending email');
-  //   }
-  // };
-
-
   const sendEmail = async () => {
     try {
-      console.log("wkrg")
-      // Make a POST request to your API route that sends the email
-      await axios.post('/api/email/');
+      await axios.post('/api/email/', {
+        body: JSON.stringify(updatedPages),
+      });
     } catch (error) {
       console.error('Error sending email:', error);
     }
   };
-
 
 
   useEffect(() => {
@@ -171,9 +149,9 @@ export default function Home() {
         <div className='pb-2 text-xl'>Follow us on! </div>
 
         <div className="flex gap-2 text-base md:text-md lg:text-xl justify-center md:w-3/4 lg:w-3/5 ">
-          <a aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpzn3t0uhyua.typeform.com%2Fto%2FYbQHCayo" rel="noopener noreferrer" target="_blank" title="Share on Facebook"><span aria-hidden="true" className="Boundary-sc-__sc-184gmm6-0 ebIlcb"><svg height="32" version="1" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M0 0h32v32H0z" fill="#FFF"></path><path d="M0 0v32h17V20h-4v-5h4v-5c0-3 3-5 6-5h4v4h-3l-2 2v4h5l-1 5h-4v12h10V0H0z" fill="#3A559F"></path></g></svg></span></a>
-          <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fpzn3t0uhyua.typeform.com%2Fto%2FYbQHCayo" rel="noopener noreferrer" target="_blank" title="Share on Twitter"><span aria-hidden="true" className="Boundary-sc-__sc-184gmm6-0 ebIlcb"><svg height="32" version="1" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M0 0h32v32H0z" fill="#50ABF1"></path><path d="M4 24l8 2a14 14 0 0 0 13-14l3-3-3 1 2-3-2 1h-1a5 5 0 0 0-8 5c-1 0-6-1-10-5 0 0-2 3 1 6l-2-1s0 4 4 5H7s1 3 4 4c0 0-3 2-7 2z" fill="#FFF"></path></g></svg></span></a>
-          <a aria-label="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fpzn3t0uhyua.typeform.com%2Fto%2FYbQHCayo" rel="noopener noreferrer" target="_blank" title="Share on LinkedIn"><span aria-hidden="true" className="Boundary-sc-__sc-184gmm6-0 ebIlcb"><svg height="32" version="1" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M0 0h32v32H0z" fill="#0084B1"></path><g fill="#FFF"><path d="M8 5c1 0 2 1 2 3l-2 2c-2 0-3-1-3-2 0-2 1-3 3-3zM9 27H6l-1-1V13l1-1h3l1 1v13l-1 1zM27 17c0-3-2-5-5-5h-1a5 5 0 0 0-4 2v-1-1h-4v15h4v-8c0-2 1-3 3-3a3 3 0 0 1 3 3v8h4V17z"></path></g></g></svg></span></a>
+          <a aria-label="Share on Facebook" href="https://www.facebook.com" rel="noopener noreferrer" target="_blank" title="Share on Facebook"><span aria-hidden="true" className="Boundary-sc-__sc-184gmm6-0 ebIlcb"><svg height="32" version="1" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M0 0h32v32H0z" fill="#FFF"></path><path d="M0 0v32h17V20h-4v-5h4v-5c0-3 3-5 6-5h4v4h-3l-2 2v4h5l-1 5h-4v12h10V0H0z" fill="#3A559F"></path></g></svg></span></a>
+          <a aria-label="Share on Twitter" href="https://twitter.com/home" rel="noopener noreferrer" target="_blank" title="Share on Twitter"><span aria-hidden="true" className="Boundary-sc-__sc-184gmm6-0 ebIlcb"><svg height="32" version="1" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M0 0h32v32H0z" fill="#50ABF1"></path><path d="M4 24l8 2a14 14 0 0 0 13-14l3-3-3 1 2-3-2 1h-1a5 5 0 0 0-8 5c-1 0-6-1-10-5 0 0-2 3 1 6l-2-1s0 4 4 5H7s1 3 4 4c0 0-3 2-7 2z" fill="#FFF"></path></g></svg></span></a>
+          <a aria-label="Share on LinkedIn" href="https://www.linkedin.com/home" rel="noopener noreferrer" target="_blank" title="Share on LinkedIn"><span aria-hidden="true" className="Boundary-sc-__sc-184gmm6-0 ebIlcb"><svg height="32" version="1" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M0 0h32v32H0z" fill="#0084B1"></path><g fill="#FFF"><path d="M8 5c1 0 2 1 2 3l-2 2c-2 0-3-1-3-2 0-2 1-3 3-3zM9 27H6l-1-1V13l1-1h3l1 1v13l-1 1zM27 17c0-3-2-5-5-5h-1a5 5 0 0 0-4 2v-1-1h-4v15h4v-8c0-2 1-3 3-3a3 3 0 0 1 3 3v8h4V17z"></path></g></g></svg></span></a>
         </div>
 
         <div className='flex absolute bottom-0 justify-center items-end h-14 w-full bg-gray-800'>
@@ -192,12 +170,11 @@ export default function Home() {
         <div className="relaive flex absolute items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[140px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
         </div>
 
-        <button onClick={sendEmail}>Send Email</button>
-
+        <button className='' onClick={sendEmail}>send mail</button>
 
         <div className={`fade-out-container ${showFadeOut ? 'fade-out' : ''} pb-2 mb-4 text-xl`}>
           <p className='text-sm'>powered by</p>
-          <p className='mt-px'>Next.js Forms</p>
+          <p className='mt-px'>Hype Forms</p>
         </div>
 
         {showNewPage ? (
@@ -207,19 +184,24 @@ export default function Home() {
               <h2 className={`mb-3 text-2xl font-semibold`}>
                 Customized SOP Generator
               </h2>
-              <p className={`m-4 opacity-50`}>
+              <p className={`m-4 text-gray-400`}>
                 Fill this questionnaire for the student. After submitting, you will receive an email at the email address that you have provided with a Statement of Purpose customized for you. You can use and modify that as per your needs.
               </p>
-              <p className={`m-6   opacity-50`}>
-                If you would like to get it edited, reviewed, or drafted by our experts, you can get in touch with us: https://effizient-immigration-inc.square.site/s/shop
+              <p className={`m-6 text-gray-400`}>
+                If you would like to get it edited, reviewed, or drafted by our experts, you can get in touch with us: <a className='underline text-indigo-500 ' href=' https://effizient-immigration-inc.square.site/s/shop'>https://effizient-immigration-inc.square.site/s/shop</a>
               </p>
-              <div className={`group  mt-3 w-full flex justify-center  text-xl cursor-pointer font-semibold`}>
-                <div className='flex bg-slate-900 w-24 rounded-lg border border-transparent pl-2.5  py-2 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30'>
-                  <span className='pr-1.5' onClick={() => { setStart(true) }}>Start</span>
+              <div className={`group  mt-3 w-full flex justify-center  cursor-pointer font-semibold`}>
+                <button tabIndex={0} onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    setStart(true);
+                  }
+                }} onClick={() => { setStart(true) }}
+                  className='flex bg-slate-900 text-lg w-24 rounded-lg border border-transparent pl-2.5  py-2 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30'>
+                  <span className='pr-2' >Start</span>
                   <span className="inline-block  transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                     -&gt;
                   </span>
-                </div>
+                </button>
               </div>
             </div>
           </div>
@@ -249,16 +231,17 @@ export default function Home() {
           error={error}
           setError={setError}
           handleLoadNextPage={handleLoadNextPage}
+          sendEmail={sendEmail}
         // content={pages[currentPage].content}
         />
       </div>
 
       <div className=' cursor-pointer rounded fixed bottom-3 right-2 bg-slate-700 '>
-        <button className=' border-r border-slate-400 p-2.5' onClick={() => { handleLoadNextPage() }}>
-          <svg height="9" width="14"><path fill='white' d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
+        <button disabled={currentPage + 1 === pages.length} className={`  border-r border-slate-400 p-2.5`} onClick={() => { handleLoadNextPage() }}>
+          <svg height="9" width="14"><path fill={`${(currentPage + 1 === pages.length) ? 'gray' : 'white'}`} d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
         </button>
-        <button className=' rotate-180 p-2.5' onClick={() => { handleLoadPreviousPage() }}>
-          <svg height="9" width="14"><path fill='white' d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
+        <button disabled={currentPage === 0} className=' rotate-180 p-2.5' onClick={() => { handleLoadPreviousPage() }}>
+          <svg height="9" width="14"><path fill={`${currentPage === 0 ? 'gray' : 'white'}`} d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
         </button>
       </div>
 
