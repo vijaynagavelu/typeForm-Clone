@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home({ title, type, options, isActive, upDown, input, setInput, error, setError, currentPage, lastPage, handleLoadNextPage }) {
 
