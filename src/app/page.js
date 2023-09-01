@@ -32,7 +32,7 @@ export default function Home() {
     }, {
       title: 'Did you pay your first year tuition?*',
       titleValue: "",
-      type: 'question',
+      type: 'option',
       options: ["Yes", "No"],
       content: 'This is the content of page 2.',
     }
@@ -199,7 +199,7 @@ export default function Home() {
   return (
     <main className="flex h-screen flex-col  items-center justify-center p-10">
 
-      {start && < div className="app flex grow items-center w-full ">
+      < div className="app flex grow items-center w-full ">
         <PageContent
           title={pages[currentPage].title}
           type={updatedPages[currentPage].type}
@@ -215,46 +215,16 @@ export default function Home() {
           handleLoadNextPage={handleLoadNextPage}
         // content={pages[currentPage].content}
         />
-      </div>}
+      </div>
 
-
-
-
-      {/* {
-        !start && <div className='md:w-3/4 lg:w-2/3'>
-          <div className="relative flex items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[140px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-          </div>
-
-          <div className="flex flex-col text-base md:text-md items-center lg:text-xl text-center w-full ">
-            <h2 className={`mb-3 text-2xl font-semibold`}>
-              Customized SOP Generator
-            </h2>
-            <p className={`m-4 opacity-50`}>
-              Fill this questionnaire for the student. After submitting, you will receive an email at the email address that you have provided with a Statement of Purpose customized for you. You can use and modify that as per your needs.
-            </p>
-            <p className={`m-6   opacity-50`}>
-              If you would like to get it edited, reviewed, or drafted by our experts, you can get in touch with us: https://effizient-immigration-inc.square.site/s/shop
-            </p>
-            <div className={`group  mt-3 w-full flex justify-center  text-xl cursor-pointer font-semibold`}>
-              <div className='flex bg-slate-900 w-24 rounded-lg border border-transparent pl-2.5  py-2 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30'>
-                <span className='pr-1.5' onClick={() => { setStart(true) }}>Start</span>
-                <span className="inline-block  transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                  -&gt;
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      } */}
-
-      {start && <div className=' cursor-pointer rounded fixed bottom-3 right-2 bg-slate-700 '>
+      <div className=' cursor-pointer rounded fixed bottom-3 right-2 bg-slate-700 '>
         <button className=' border-r border-slate-400 p-2.5' onClick={() => { handleLoadNextPage() }}>
           <svg height="9" width="14"><path fill='white' d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
         </button>
         <button className=' rotate-180 p-2.5' onClick={() => { handleLoadPreviousPage() }}>
           <svg height="9" width="14"><path fill='white' d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path></svg>
         </button>
-      </div>}
+      </div>
 
     </main >
   )
