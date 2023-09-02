@@ -5,37 +5,44 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req) {
 
+
+
     const body = await req.text();
     const parsedData = JSON.parse(body);
     const data = JSON.parse(parsedData.body);
     console.log("post in process", data[1].titleValue)
 
     async function generatePDF(data) {
+
+        var PdfPrinter = require('pdfmake');
+        var fs = require('fs');
+
         var fonts = {
             Roboto: {
-                normal: '../../../../fons/DejaVuSans.ttf',
+                normal: '../../../../fonts/DejaVuSans.ttf',
                 bold: '../../../../fonts/DejaVuSans-Bold.ttf',
                 italics: '../../../../fonts/DejaVuSans-Oblique.ttf',
                 bolditalics: '../../../../fonts/DejaVuSans-BoldOblique.ttf'
             }
         }
-        var PdfPrinter = require('pdfmake');
+
         var printer = new PdfPrinter(fonts);
-        var fs = require('fs');
+
 
         var docDefinition = { content: [{ text: 'Hai Mark', style: 'header' }], styles: { header: { fontSize: 18, bold: true } } }
 
         var options = {};
 
-        // var pdfDoc = printer.createPdfKitDocument(docDefinition, options);
-        //pdfDoc.pipe(fs.createWriteStream('Orginal.pdf'));
-        //pdfDoc.end();
-        return printer.createPdfKitDocument(docDefinition, options);
+        var pdfDoc = printer.createPdfKitDocument(docDefinition, options);
+        pdfDoc.pipe(fs.createWriteStream('Orginal.pdf'));
+        pdfDoc.end();
+
+        return pdfDoc.end();
     }
 
     try {
-        //const pdfBuffer = await generatePDF(data);
-        const pdfBuffer = "lk";
+        const pdfBuffer = await generatePDF(data);
+        // const pdfBuffer = "lk";
         console.log('AttachedMent:', pdfBuffer)
 
         const transporter = nodemailer.createTransport({
@@ -75,7 +82,7 @@ In case you would like to get the full statement of purpose drafted by
 our experts, do not hesitate to contact us
 
 Here is the doc file in case you would like to edit it:
-https://docs.google.com/document/d/1jFb8KAaQejbR1rC7tJNBNJp4wxyoZiieZfozbJUXxPw/edit?usp=drivesdk
+https://docs.google.com/document/d/1jFb8KAaQejbR1rC7tJNBNJp4wxoZiieZfozbJUXxPw/edit?usp=drivesdk
 
 Leave us a Google review if you liked our service:
 https://g.page/r/CQT2Q8IwOnqpEB0/review
