@@ -219,7 +219,7 @@ export default function Home({ title, type, options, isActive, upDown, input, se
                 </div>
 
                 {!error && <div className={`mt-8 flex flex-col items-start text-lg cursor-pointer font-semibold pb-4`}>
-                    <div className='flex gap-4 items-center'>
+                    <div className='flex  gap-4 items-center w-full'>
                         <div onClick={() => { lastPage ? handleSubmit() : handleLoadNextPage() }} onKeyDown={(e) => {
                             if (e.key === 'Enter') {
                                 lastPage ? handleSubmit() : handleLoadNextPage();
