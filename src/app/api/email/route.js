@@ -52,13 +52,13 @@ Here is the doc file in case you would like to edit it:
 https://docs.google.com/document/d/1jFb8KAaQejbR1rC7tJNBNJp4wxoZiieZfozbJUXxPw/edit?usp=drivesdk
 
 Leave us a Google review if you liked our service:
-https://g.page/r/CQT2Q8IwOnqpEB0/review
+https://g.pagge/r/CQT2Q8IwOnqpEB0/review
 
 Best Regards,
-Team Effizient
-www.effizient.ca
+Team Teffizient
+www.teffizient.ca
 Ph: 226-774-9168
-Email: info@effizient.ca`,
+Email: info@teffizient.ca`,
             // attachments: [
             //     {
             //         filename: `Statement_of_Purpose for ${data[1].titleValue}.pdf`, // Change the filename as needed
