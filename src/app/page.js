@@ -98,6 +98,12 @@ export default function Home() {
   const [showNewPage, setShowNewPage] = useState(false);
   const [mainPage, setMainPage] = useState(false);
   const [showFadeOut, setShowFadeOut] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
 
   const sendEmail = async () => {
     try {
@@ -110,17 +116,26 @@ export default function Home() {
   };
 
   const handleLoadNextPage = (value) => {
-    console.log(value);
+    const updatedPagesCopy = [...updatedPages];
+    updatedPagesCopy[currentPage].titleValue = input;
+
     if (!input) {
       setError(true);
+      setIsValid(true);
       return console.log("error")
     }
+
+    if (updatedPagesCopy[currentPage].title === "Email*" && !validateEmail(input)) {
+      setError(true);
+      setIsValid(validateEmail(input));
+      console.log((validateEmail(input)));
+      return;
+    }
+
     if (value) {
       setCreditPage(true);
       return;
     }
-    const updatedPagesCopy = [...updatedPages];
-    updatedPagesCopy[currentPage].titleValue = input;
 
     setUpDown(true);
     setFade(false); // Trigger fade-out effect
@@ -276,6 +291,7 @@ export default function Home() {
           handleLoadNextPage={handleLoadNextPage}
           sendEmail={sendEmail}
           content={pages[currentPage].content}
+          isValid={isValid}
         />
       </div>
 
