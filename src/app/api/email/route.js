@@ -32,7 +32,7 @@ export async function POST(req) {
 
         const mailOptions = {
             from: 'vijay.n.2015.eee@rajalakshmi.edu.in',
-            to: 'vijaynaga.0503@gmail.com',
+            to: data[0].titleValue,
             subject: `Statement of Purpose for ${data[1].titleValue}`,
             text: `Dear ${data[1].titleValue},
 
