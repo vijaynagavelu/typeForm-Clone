@@ -5,40 +5,6 @@ import axios from 'axios';
 
 export default function Home() {
 
-  // const pages = [
-  //   {
-  //     title: 'Email*',
-  //     titleValue: "",
-  //     type: 'question',
-  //     options: [],
-  //     content: 'This is the content of page 1.',
-  //   }, {
-  //     title: 'Full Name',
-  //     titleValue: "",
-  //     type: 'question',
-  //     options: [],
-  //     content: 'This is the content of page 2.',
-  //   }, {
-  //     title: 'Highest Level of Education*',
-  //     titleValue: "",
-  //     type: 'option',
-  //     options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
-  //     content: 'This is the content of page 2.',
-  //   }, {
-  //     title: 'Highest Level of Education*',
-  //     titleValue: "",
-  //     type: 'dropDown',
-  //     options: ["Grade 12", "Bachelors", 'PhD', "Masters Degree", "Diploma"],
-  //     content: 'This is the content of page 2.',
-  //   }, {
-  //     title: 'Did you pay your first year tuition?*',
-  //     titleValue: "",
-  //     type: 'option',
-  //     options: ["Yes", "No"],
-  //     content: 'This is the content of page 2.',
-  //   }
-  // ];
-
   const pages = [
     {
       title: 'Email*',
@@ -119,7 +85,6 @@ export default function Home() {
       type: 'question',
     },
   ];
-
 
   const [start, setStart] = useState(false);
   const [updatedPages, setUpdatedPages] = useState([...pages]);
@@ -249,8 +214,6 @@ export default function Home() {
 
         <div className="relaive flex absolute items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[140px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
         </div>
-
-        <button className='' onClick={sendEmail}>send mail</button>
 
         <div className={`fade-out-container ${showFadeOut ? 'fade-out' : ''} pb-2 mb-4 text-xl`}>
           <p className='text-sm'>powered by</p>
